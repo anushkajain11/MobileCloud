@@ -82,18 +82,13 @@
 				<div id="page-content">
 					
 					<div class="panel">
-						<div class="panel-heading">
-							<h3 class="panel-title">Geocoding</h3>
-						</div>
+						
 						<div class="panel-body">
-							<form class="form-inline pad-btm" method="post" id="demo-geocoding-form">
-								<div class="form-group"><input type="text" placeholder="Address..." class=" form-control" id="demo-geocoding-address"></div>
-								<button type="submit" value="Search" class="btn btn-purple btn-labeled fa fa-search">Search</button>
-							</form>
+							
 					
 							<!-- Geocoding -->
 							<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-							<div id="demo-geocoding-map" style="height:300px"></div>
+							<div id="demo-geocoding-map" style="height:500px"></div>
 							<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 					
 						</div>
@@ -150,13 +145,62 @@
 
 	
 	<?php include_once('body_bottom.php'); ?>
+
+	<script>
+		
+		
+
+	</script>
 	<!--Gmaps [ OPTIONAL ]-->
 	<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
 	<script src="nifty-v2.2/template/plugins/gmaps/gmaps.js"></script>
 
+	<script type="text/javascript">
+		$(document).ready(function() {
 
-	<!--Map Example [ SAMPLE ]-->
-	<script src="nifty-v2.2/template/js/demo/misc-gmaps.js"></script>
+
+		// GMAPS
+		// =================================================================
+		// Require gmaps
+		// -----------------------------------------------------------------
+		// http://hpneo.github.io/gmaps/
+		// =================================================================
+
+
+
+			
+
+
+
+		// Geocoding
+		// =================================================================
+		var geomap = new GMaps({
+			div: '#demo-geocoding-map',
+			lat: 35.741,
+			lng: -121.884,
+			zoom:4
+		});
+		var physicalSensorsJsonString = <?php echo json_encode($physicalSensors); ?>;
+		var physicalSensors = physicalSensorsJsonString;
+
+		for(var i=0; i < physicalSensors.length; i++) {
+
+			geomap.addMarker({
+			  lat: physicalSensors[i].lat,
+			  lng: physicalSensors[i].lon,
+			  title: physicalSensors[i].name
+			});
+
+
+		}
+
+		
+
+
+
+	});
+	</script>
+	
 		
 
 </body>

@@ -106,7 +106,7 @@ $autoload['language'] = array();
 |
  */
 
-$autoload['model'] = array('User_model');
+$autoload['model'] = array('User_model', 'Sensor_model');
 
 /* End of file autoload.php */
 /* Location: ./application/config/autoload.php */
