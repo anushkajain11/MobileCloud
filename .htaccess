@@ -1,0 +1,10 @@
+LimitRequestBody 0
+
+ RewriteEngine On
+ RewriteBase /
+ RewriteCond $1 !^(index\.php|Staticversion|images|userData|nifty-v2.2|robots\.txt)
+
+ # Allow any files or directories that exist to be displayed directly
+ RewriteCond %{REQUEST_FILENAME} !-f
+ RewriteCond %{REQUEST_FILENAME} !-d
+ RewriteRule ^(.*)$ sensorCloudWeb/index.php?/$1 [L,QSA]
